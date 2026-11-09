@@ -1,0 +1,39 @@
+{
+  "race": {
+    "name": "X Millas Costa Blanca",
+    "date": "2027-04-18",
+    "place": "l'Alfàs del Pi",
+    "distance_km": 16.09,
+    "gain_m": 225
+  },
+  "timezone": "Europe/London",
+  "week1_start": "2026-12-07",
+  "targets_are": "ceilings",
+  "benchmark_climb": {
+    "name": null,
+    "strava_segment_id": null,
+    "note": "TBD by owner — a local road climb ~3–5%, 3–6 min"
+  },
+  "races": [],
+  "weeks": [
+    { "week": 1, "iso_week": "2026-W50", "start": "2026-12-07", "phase": "Rebuild", "dist_target_km": 20, "focus": "Post-102K: easy road miles, flat/rolling. Re-find leg speed gently.", "key": ["Easy runs only", "2× 6×20s strides on the flat", "Calf raises 3×/wk"] },
+    { "week": 2, "iso_week": "2026-W51", "start": "2026-12-14", "phase": "Rebuild", "dist_target_km": 24, "focus": "Add gentle hill strides — first uphill stimulus, no fatigue.", "key": ["6×20s hill strides (4–6%), walk down", "Long run 60 min easy"] },
+    { "week": 3, "iso_week": "2026-W52", "start": "2026-12-21", "phase": "Rebuild", "dist_target_km": 26, "focus": "Christmas week: keep it easy and regular.", "key": ["8×20s hill strides", "Long run 65 min easy"] },
+    { "week": 4, "iso_week": "2026-W53", "start": "2026-12-28", "phase": "Rebuild", "dist_target_km": 20, "notes": "recovery", "focus": "Absorb. Set the uphill baseline.", "key": ["Benchmark climb #1 — steady, controlled, note HR + time", "Easy only otherwise"] },
+    { "week": 5, "iso_week": "2027-W01", "start": "2027-01-04", "phase": "Base", "dist_target_km": 28, "focus": "Short hill reps: power without fade.", "key": ["Hill reps 8×45s @ 5–8%, jog down", "Long run 70 min"] },
+    { "week": 6, "iso_week": "2027-W02", "start": "2027-01-11", "phase": "Base", "dist_target_km": 31, "focus": "More reps; long run gets rolling terrain.", "key": ["Hill reps 10×45s", "Long run 75 min rolling"] },
+    { "week": 7, "iso_week": "2027-W03", "start": "2027-01-18", "phase": "Base", "dist_target_km": 34, "focus": "Longer reps; first steady running.", "key": ["Hill reps 6×90s @ 4–6%", "Steady 20 min", "Long run 80 min"] },
+    { "week": 8, "iso_week": "2027-W04", "start": "2027-01-25", "phase": "Base", "dist_target_km": 26, "notes": "recovery", "focus": "Absorb + retest.", "key": ["Benchmark climb #2", "Easy only otherwise"] },
+    { "week": 9, "iso_week": "2027-W05", "start": "2027-02-01", "phase": "Build", "dist_target_km": 36, "focus": "Mid-race-climb sim: sustained reps at race effort.", "key": ["Long hill reps 5×3 min @ 3–5%", "Tempo 15 min flat"] },
+    { "week": 10, "iso_week": "2027-W06", "start": "2027-02-08", "phase": "Build", "dist_target_km": 39, "focus": "Climb late in a run (finish-drag prep).", "key": ["Long hill reps 6×3 min", "Long run 90 min, last 15 min uphill steady"] },
+    { "week": 11, "iso_week": "2027-W07", "start": "2027-02-15", "phase": "Build", "dist_target_km": 42, "focus": "Finish-drag sim: long gentle climb at effort.", "key": ["Climb tempo 2×8 min @ 2–3%", "Long run 95 min"] },
+    { "week": 12, "iso_week": "2027-W08", "start": "2027-02-22", "phase": "Build", "dist_target_km": 32, "notes": "recovery", "focus": "Absorb + retest.", "key": ["Benchmark climb #3", "Easy only otherwise"] },
+    { "week": 13, "iso_week": "2027-W09", "start": "2027-03-01", "phase": "Build", "dist_target_km": 44, "focus": "Fatigued climbing: climb after running.", "key": ["30 min steady flat → 12 min climb tempo", "Hill reps 4×4 min"] },
+    { "week": 14, "iso_week": "2027-W10", "start": "2027-03-08", "phase": "Build", "dist_target_km": 47, "focus": "Course rehearsal: 10 km rolling → 3 km climb at effort.", "key": ["Course sim (rolling → long climb)", "Strides"] },
+    { "week": 15, "iso_week": "2027-W11", "start": "2027-03-15", "phase": "Build", "dist_target_km": 50, "focus": "Block peak — only if tissue says yes.", "key": ["Long run 100 min with 2 climbs at effort", "Hill reps 5×4 min"] },
+    { "week": 16, "iso_week": "2027-W12", "start": "2027-03-22", "phase": "Build", "dist_target_km": 38, "notes": "recovery", "focus": "Absorb + final retest.", "key": ["Benchmark climb #4", "Easy only otherwise"] },
+    { "week": 17, "iso_week": "2027-W13", "start": "2027-03-29", "phase": "Sharpen", "dist_target_km": 42, "focus": "Race effort on hills; descents relaxed and quick.", "key": ["3×(1 mi at effort incl. a climb)", "Downhill strides 6×20s"] },
+    { "week": 18, "iso_week": "2027-W14", "start": "2027-04-05", "phase": "Taper", "dist_target_km": 32, "focus": "Keep the feel, drop the load.", "key": ["2×6 min climb at effort", "Strides"] },
+    { "week": 19, "iso_week": "2027-W15", "start": "2027-04-12", "phase": "Race", "dist_target_km": 26, "focus": "Race Sun 18 Apr. Descents relaxed; hold effort into the finish drag.", "key": ["Shakeout + strides Tue/Thu", "X Millas — Sun 18 Apr"] }
+  ]
+}

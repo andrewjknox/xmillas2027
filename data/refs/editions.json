@@ -1,0 +1,483 @@
+{
+  "generated_by": "scripts/build/editions.mjs",
+  "gap_model": "Minetti 2002 (energy cost of running vs gradient)",
+  "pb_year": 2023,
+  "sections_eq_m": {
+    "start": 1243,
+    "down1": 4021,
+    "climb1": 2188,
+    "dip": 867,
+    "climb2": 932,
+    "top": 1425,
+    "down2": 1747,
+    "climb3": 3559,
+    "finish": 379
+  },
+  "editions": [
+    {
+      "year": 2022,
+      "activity_id": "6889529684",
+      "name": "X Millas Costa Blanca 🇪🇸",
+      "date": "2022-03-27",
+      "note": "First long run after injury; no walk breaks",
+      "elapsed_s": 5036,
+      "chip_s": null,
+      "gps_m": 16012,
+      "gap_climbs_s_per_km": 292,
+      "gap_rolling_s_per_km": 314.5,
+      "gap_descents_s_per_km": 321.6,
+      "climb_fade": 0.928,
+      "late_climb_fade": 1.035,
+      "sections": [
+        {
+          "id": "start",
+          "time_s": 383,
+          "pace_s_per_km": 319.3,
+          "gap_s_per_km": 308.2,
+          "avg_hr": 154,
+          "vs_pb_s": 72
+        },
+        {
+          "id": "down1",
+          "time_s": 1274,
+          "pace_s_per_km": 289.4,
+          "gap_s_per_km": 316.7,
+          "avg_hr": 161,
+          "vs_pb_s": 156
+        },
+        {
+          "id": "climb1",
+          "time_s": 621,
+          "pace_s_per_km": 355.1,
+          "gap_s_per_km": 284.1,
+          "avg_hr": 172,
+          "climb_tax_s": -67,
+          "vs_pb_s": 21
+        },
+        {
+          "id": "dip",
+          "time_s": 283,
+          "pace_s_per_km": 297.6,
+          "gap_s_per_km": 326,
+          "avg_hr": 165,
+          "vs_pb_s": 25
+        },
+        {
+          "id": "climb2",
+          "time_s": 283,
+          "pace_s_per_km": 376.8,
+          "gap_s_per_km": 303.3,
+          "avg_hr": 171,
+          "climb_tax_s": -10,
+          "vs_pb_s": 30
+        },
+        {
+          "id": "top",
+          "time_s": 460,
+          "pace_s_per_km": 317,
+          "gap_s_per_km": 322.5,
+          "avg_hr": 166,
+          "vs_pb_s": 45
+        },
+        {
+          "id": "down2",
+          "time_s": 581,
+          "pace_s_per_km": 276.9,
+          "gap_s_per_km": 332.8,
+          "avg_hr": 167,
+          "vs_pb_s": 53
+        },
+        {
+          "id": "climb3",
+          "time_s": 1046,
+          "pace_s_per_km": 332.2,
+          "gap_s_per_km": 294,
+          "avg_hr": 173,
+          "climb_tax_s": -73,
+          "vs_pb_s": 68
+        },
+        {
+          "id": "finish",
+          "time_s": 105,
+          "pace_s_per_km": 257.8,
+          "gap_s_per_km": 277.6,
+          "avg_hr": 174,
+          "vs_pb_s": -8
+        }
+      ],
+      "is_pb": false
+    },
+    {
+      "year": 2023,
+      "activity_id": "8778802272",
+      "name": "X Millas - Chip 1:15:45 ☀️🔥🥵",
+      "date": "2023-03-26",
+      "note": "PB — chip 1:15:45. Ibuprofen pre-start; physio next day",
+      "elapsed_s": 4574,
+      "chip_s": 4545,
+      "gps_m": 16140,
+      "gap_climbs_s_per_km": 274.2,
+      "gap_rolling_s_per_km": 280.3,
+      "gap_descents_s_per_km": 285.4,
+      "climb_fade": 0.978,
+      "late_climb_fade": 1.002,
+      "sections": [
+        {
+          "id": "start",
+          "time_s": 311,
+          "pace_s_per_km": 259.3,
+          "gap_s_per_km": 250.3,
+          "avg_hr": 162,
+          "vs_pb_s": 0
+        },
+        {
+          "id": "down1",
+          "time_s": 1118,
+          "pace_s_per_km": 254.2,
+          "gap_s_per_km": 278.1,
+          "avg_hr": 161,
+          "vs_pb_s": 0
+        },
+        {
+          "id": "climb1",
+          "time_s": 600,
+          "pace_s_per_km": 342.8,
+          "gap_s_per_km": 274.2,
+          "avg_hr": 163,
+          "climb_tax_s": -13,
+          "vs_pb_s": 0
+        },
+        {
+          "id": "dip",
+          "time_s": 258,
+          "pace_s_per_km": 272,
+          "gap_s_per_km": 298,
+          "avg_hr": 158,
+          "vs_pb_s": 0
+        },
+        {
+          "id": "climb2",
+          "time_s": 253,
+          "pace_s_per_km": 337.3,
+          "gap_s_per_km": 271.5,
+          "avg_hr": 163,
+          "climb_tax_s": -8,
+          "vs_pb_s": 0
+        },
+        {
+          "id": "top",
+          "time_s": 415,
+          "pace_s_per_km": 286.1,
+          "gap_s_per_km": 291,
+          "avg_hr": 158,
+          "vs_pb_s": 0
+        },
+        {
+          "id": "down2",
+          "time_s": 528,
+          "pace_s_per_km": 251.2,
+          "gap_s_per_km": 302,
+          "avg_hr": 158,
+          "vs_pb_s": 0
+        },
+        {
+          "id": "climb3",
+          "time_s": 978,
+          "pace_s_per_km": 310.4,
+          "gap_s_per_km": 274.7,
+          "avg_hr": 162,
+          "climb_tax_s": -19,
+          "vs_pb_s": 0
+        },
+        {
+          "id": "finish",
+          "time_s": 113,
+          "pace_s_per_km": 277.3,
+          "gap_s_per_km": 298.7,
+          "avg_hr": 164,
+          "vs_pb_s": 0
+        }
+      ],
+      "is_pb": true
+    },
+    {
+      "year": 2024,
+      "activity_id": "11177551523",
+      "name": "X Millas Run/Walk ☀️🥵",
+      "date": "2024-04-14",
+      "note": "Run/walk — calf rehab; \"Calf made it\"",
+      "elapsed_s": 5511,
+      "chip_s": null,
+      "gps_m": 16160,
+      "gap_climbs_s_per_km": 321.3,
+      "gap_rolling_s_per_km": 342.3,
+      "gap_descents_s_per_km": 351.1,
+      "climb_fade": 0.939,
+      "late_climb_fade": 1.06,
+      "sections": [
+        {
+          "id": "start",
+          "time_s": 390,
+          "pace_s_per_km": 325.2,
+          "gap_s_per_km": 313.9,
+          "avg_hr": 147,
+          "vs_pb_s": 79
+        },
+        {
+          "id": "down1",
+          "time_s": 1365,
+          "pace_s_per_km": 310.3,
+          "gap_s_per_km": 339.5,
+          "avg_hr": 150,
+          "vs_pb_s": 247
+        },
+        {
+          "id": "climb1",
+          "time_s": 678,
+          "pace_s_per_km": 387.5,
+          "gap_s_per_km": 310,
+          "avg_hr": 161,
+          "climb_tax_s": -71,
+          "vs_pb_s": 78
+        },
+        {
+          "id": "dip",
+          "time_s": 317,
+          "pace_s_per_km": 333.4,
+          "gap_s_per_km": 365.3,
+          "avg_hr": 154,
+          "vs_pb_s": 59
+        },
+        {
+          "id": "climb2",
+          "time_s": 299,
+          "pace_s_per_km": 398.6,
+          "gap_s_per_km": 320.8,
+          "avg_hr": 159,
+          "climb_tax_s": -20,
+          "vs_pb_s": 46
+        },
+        {
+          "id": "top",
+          "time_s": 510,
+          "pace_s_per_km": 351.4,
+          "gap_s_per_km": 357.5,
+          "avg_hr": 152,
+          "vs_pb_s": 95
+        },
+        {
+          "id": "down2",
+          "time_s": 660,
+          "pace_s_per_km": 314.5,
+          "gap_s_per_km": 378,
+          "avg_hr": 151,
+          "vs_pb_s": 132
+        },
+        {
+          "id": "climb3",
+          "time_s": 1169,
+          "pace_s_per_km": 371.2,
+          "gap_s_per_km": 328.5,
+          "avg_hr": 160,
+          "climb_tax_s": -49,
+          "vs_pb_s": 191
+        },
+        {
+          "id": "finish",
+          "time_s": 123,
+          "pace_s_per_km": 300.6,
+          "gap_s_per_km": 323.8,
+          "avg_hr": 171,
+          "vs_pb_s": 10
+        }
+      ],
+      "is_pb": false
+    },
+    {
+      "year": 2025,
+      "activity_id": "14095583517",
+      "name": "X Millas (run/walk) ☀️🕶️",
+      "date": "2025-04-06",
+      "note": "Run/walk",
+      "elapsed_s": 5701,
+      "chip_s": null,
+      "gps_m": 16173,
+      "gap_climbs_s_per_km": 341.8,
+      "gap_rolling_s_per_km": 348,
+      "gap_descents_s_per_km": 356.4,
+      "climb_fade": 0.982,
+      "late_climb_fade": 1.045,
+      "sections": [
+        {
+          "id": "start",
+          "time_s": 409,
+          "pace_s_per_km": 341.1,
+          "gap_s_per_km": 329.3,
+          "avg_hr": 142,
+          "vs_pb_s": 98
+        },
+        {
+          "id": "down1",
+          "time_s": 1387,
+          "pace_s_per_km": 315.2,
+          "gap_s_per_km": 345,
+          "avg_hr": 146,
+          "vs_pb_s": 269
+        },
+        {
+          "id": "climb1",
+          "time_s": 727,
+          "pace_s_per_km": 415.4,
+          "gap_s_per_km": 332.3,
+          "avg_hr": 156,
+          "climb_tax_s": -34,
+          "vs_pb_s": 127
+        },
+        {
+          "id": "dip",
+          "time_s": 323,
+          "pace_s_per_km": 339.8,
+          "gap_s_per_km": 372.3,
+          "avg_hr": 151,
+          "vs_pb_s": 65
+        },
+        {
+          "id": "climb2",
+          "time_s": 320,
+          "pace_s_per_km": 426.1,
+          "gap_s_per_km": 342.9,
+          "avg_hr": 156,
+          "climb_tax_s": -4,
+          "vs_pb_s": 67
+        },
+        {
+          "id": "top",
+          "time_s": 507,
+          "pace_s_per_km": 349.7,
+          "gap_s_per_km": 355.8,
+          "avg_hr": 154,
+          "vs_pb_s": 92
+        },
+        {
+          "id": "down2",
+          "time_s": 669,
+          "pace_s_per_km": 318.6,
+          "gap_s_per_km": 382.9,
+          "avg_hr": 152,
+          "vs_pb_s": 141
+        },
+        {
+          "id": "climb3",
+          "time_s": 1236,
+          "pace_s_per_km": 392.4,
+          "gap_s_per_km": 347.3,
+          "avg_hr": 157,
+          "climb_tax_s": -2,
+          "vs_pb_s": 258
+        },
+        {
+          "id": "finish",
+          "time_s": 123,
+          "pace_s_per_km": 301.8,
+          "gap_s_per_km": 325.1,
+          "avg_hr": 165,
+          "vs_pb_s": 10
+        }
+      ],
+      "is_pb": false
+    },
+    {
+      "year": 2026,
+      "activity_id": "18167667701",
+      "name": "X Millas ☀️🥵",
+      "date": "2026-04-19",
+      "note": "Hot; ran it continuously",
+      "elapsed_s": 5202,
+      "chip_s": null,
+      "gps_m": 16158,
+      "gap_climbs_s_per_km": 307.4,
+      "gap_rolling_s_per_km": 319.1,
+      "gap_descents_s_per_km": 329.4,
+      "climb_fade": 0.963,
+      "late_climb_fade": 1.041,
+      "sections": [
+        {
+          "id": "start",
+          "time_s": 379,
+          "pace_s_per_km": 316.1,
+          "gap_s_per_km": 305.2,
+          "avg_hr": 149,
+          "vs_pb_s": 68
+        },
+        {
+          "id": "down1",
+          "time_s": 1283,
+          "pace_s_per_km": 291.6,
+          "gap_s_per_km": 319,
+          "avg_hr": 154,
+          "vs_pb_s": 165
+        },
+        {
+          "id": "climb1",
+          "time_s": 657,
+          "pace_s_per_km": 375.5,
+          "gap_s_per_km": 300.4,
+          "avg_hr": 163,
+          "climb_tax_s": -41,
+          "vs_pb_s": 57
+        },
+        {
+          "id": "dip",
+          "time_s": 287,
+          "pace_s_per_km": 302.5,
+          "gap_s_per_km": 331.3,
+          "avg_hr": 158,
+          "vs_pb_s": 29
+        },
+        {
+          "id": "climb2",
+          "time_s": 283,
+          "pace_s_per_km": 376.9,
+          "gap_s_per_km": 303.3,
+          "avg_hr": 166,
+          "climb_tax_s": -14,
+          "vs_pb_s": 30
+        },
+        {
+          "id": "top",
+          "time_s": 471,
+          "pace_s_per_km": 324.8,
+          "gap_s_per_km": 330.4,
+          "avg_hr": 158,
+          "vs_pb_s": 56
+        },
+        {
+          "id": "down2",
+          "time_s": 617,
+          "pace_s_per_km": 293.7,
+          "gap_s_per_km": 353,
+          "avg_hr": 154,
+          "vs_pb_s": 89
+        },
+        {
+          "id": "climb3",
+          "time_s": 1113,
+          "pace_s_per_km": 353.2,
+          "gap_s_per_km": 312.6,
+          "avg_hr": 164,
+          "climb_tax_s": -23,
+          "vs_pb_s": 135
+        },
+        {
+          "id": "finish",
+          "time_s": 112,
+          "pace_s_per_km": 275.3,
+          "gap_s_per_km": 296.6,
+          "avg_hr": 169,
+          "vs_pb_s": -1
+        }
+      ],
+      "is_pb": false
+    }
+  ]
+}

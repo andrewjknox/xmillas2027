@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X Millas 2027 · Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="plan">
+  <header class="sunset">
+    <div class="header-inner">
+      <div class="title-block">
+        <h1>The Plan</h1>
+        <p class="subtitle">19 WEEKS · MON 7 DEC 2026 → SUN 18 APR 2027</p>
+      </div>
+      <div class="countdown" role="timer" aria-label="Days to race day">
+        <span class="countdown-label">RACE IN</span>
+        <span id="countdown" class="countdown-value">--</span>
+      </div>
+    </div>
+  </header>
+  <nav class="site-nav" aria-label="Site"></nav>
+
+  <main>
+    <section class="panel" aria-labelledby="rules-title">
+      <h2 id="rules-title">Rules of the block</h2>
+      <div class="callout">
+        <p><strong>Ceilings, not quotas.</strong> Weekly distance is a cap. Under is fine; over by &gt;10% gets flagged.</p>
+        <p><strong>Tissue leads.</strong> No goal time. Progress only when legs and calf say yes.</p>
+        <p><strong>Target the weakness.</strong> Uphill work builds from strides → short reps → long reps → climbing on tired legs (the finish drag).</p>
+        <p><strong>Every 4th week is recovery</strong>, with a benchmark-climb retest: <span id="benchmark"></span></p>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="races-title">
+      <h2 id="races-title">Tune-up races</h2>
+      <div id="races"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="plan-title">
+      <h2 id="plan-title">Week by week</h2>
+      <div class="table-scroll">
+        <table id="plan-table">
+          <thead>
+            <tr>
+              <th scope="col">Wk</th><th scope="col">Starts</th><th scope="col">Phase</th>
+              <th scope="col" class="num" id="th-ceiling">Ceiling</th><th scope="col" class="num" id="th-actual">Actual</th>
+              <th scope="col">Focus · key sessions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer"></footer>
+
+  <script src="data.js"></script>
+  <script src="nav.js"></script>
+  <script src="app.min.js"></script>
+</body>
+</html>

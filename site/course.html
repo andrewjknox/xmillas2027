@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X Millas 2027 · Course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="course">
+  <header class="sunset">
+    <div class="header-inner">
+      <div class="title-block">
+        <h1>The Course</h1>
+        <p class="subtitle" id="course-sub">10 MILES · SAME ROUTE EVERY YEAR</p>
+      </div>
+      <div class="countdown" role="timer" aria-label="Days to race day">
+        <span class="countdown-label">RACE IN</span>
+        <span id="countdown" class="countdown-value">--</span>
+      </div>
+    </div>
+  </header>
+  <nav class="site-nav" aria-label="Site"></nav>
+
+  <main>
+    <section class="panel" aria-labelledby="profile-title">
+      <div class="panel-head">
+        <h2 id="profile-title">Profile</h2>
+        <ul class="legend">
+          <li><span class="sw pink" aria-hidden="true"></span>Climb</li>
+          <li><span class="sw sky" aria-hidden="true"></span>Descent</li>
+          <li><span class="sw violet" aria-hidden="true"></span>Rolling</li>
+        </ul>
+      </div>
+      <div class="canvas-wrap"><canvas id="profile-chart" height="240" role="img" aria-label="Course elevation profile with sections"></canvas></div>
+      <div class="table-scroll">
+        <table id="section-table">
+          <thead><tr><th scope="col">Section</th><th scope="col" class="num">From</th><th scope="col" class="num">Length</th><th scope="col" class="num">Gain</th><th scope="col" class="num">Avg grade</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="eds-title">
+      <h2 id="eds-title">Past editions</h2>
+      <div class="table-scroll">
+        <table id="editions-table">
+          <thead><tr>
+            <th scope="col">Year</th><th scope="col" class="num">Time</th>
+            <th scope="col" class="num" title="GAP on climbs / GAP on rolling sections">Climb fade</th>
+            <th scope="col" class="num" title="GAP on finish drag / GAP on mid-race climb">Late-climb fade</th>
+            <th scope="col">Note</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="small muted">Fade = grade-adjusted pace (Minetti 2002) ratio. 1.00 = climbs cost exactly what the gradient predicts. Elapsed time throughout (walk breaks count).</p>
+    </section>
+
+    <section class="panel" aria-labelledby="loss-title">
+      <h2 id="loss-title">Time vs PB by section</h2>
+      <div class="table-scroll"><table id="loss-table"><thead></thead><tbody></tbody></table></div>
+      <p class="small muted">Seconds slower (+) or faster (−) than the PB edition on each section. Climb tax = seconds lost on climbs beyond that year's rolling-ground GAP (− = climbs ran better than grade predicts). Hover a cell for time, GAP, HR.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="find-title">
+      <h2 id="find-title">What the data says</h2>
+      <div id="findings" class="callout"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="curve-title">
+      <h2 id="curve-title">Your grade → pace curve</h2>
+      <div class="table-scroll"><table id="curve-table"><thead><tr><th scope="col" class="num">Grade</th><th scope="col" class="num">Race pace</th><th scope="col" class="num">Samples</th></tr></thead><tbody></tbody></table></div>
+      <p class="small muted" id="curve-note"></p>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip hidden" role="status"></div>
+  <footer id="footer"></footer>
+
+  <script src="data.js"></script>
+  <script src="nav.js"></script>
+  <script src="app.min.js"></script>
+</body>
+</html>

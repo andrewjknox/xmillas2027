@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>X Millas 2027 · Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="dashboard">
+  <header class="sunset">
+    <div class="header-inner">
+      <div class="title-block">
+        <h1>X Millas 2027</h1>
+        <p class="subtitle">10 MILES · L'ALFÀS DEL PI · SUN 18 APR 2027</p>
+      </div>
+      <div class="countdown" role="timer" aria-label="Days to race day">
+        <span class="countdown-label">RACE IN</span>
+        <span id="countdown" class="countdown-value">--</span>
+      </div>
+    </div>
+  </header>
+  <nav class="site-nav" aria-label="Site"></nav>
+
+  <main>
+    <section id="hero" class="panel" aria-labelledby="hero-title">
+      <div class="panel-head">
+        <h2 id="hero-title">This week</h2>
+        <span id="hero-badge" class="badge"></span>
+      </div>
+      <div class="hero-grid">
+        <div>
+          <div class="big">
+            <span id="hero-actual" class="big-num">0</span>
+            <span id="hero-unit" class="big-unit">mi</span>
+            <span class="big-vs">/ <span id="hero-ceiling">0</span></span>
+          </div>
+          <p id="hero-pct" class="pct"></p>
+          <div class="bar" role="img" id="hero-bar" aria-label="Distance versus pro-rated ceiling">
+            <div id="hero-fill" class="bar-fill"></div>
+            <div id="hero-mark" class="bar-mark"></div>
+          </div>
+          <p class="bar-legend">Fill = this week · gold line = full-week ceiling. Ceilings, not quotas — tissue first.</p>
+          <div id="hero-focus" class="focus"></div>
+        </div>
+        <dl class="stats">
+          <div class="stat"><dt>Time on feet</dt><dd id="stat-tof">-</dd></div>
+          <div class="stat"><dt>Long run</dt><dd id="stat-long">-</dd></div>
+          <div class="stat"><dt>Sessions</dt><dd id="stat-sessions">-</dd></div>
+          <div class="stat"><dt>Vert (context)</dt><dd id="stat-vert">-</dd></div>
+          <div class="stat"><dt>Day</dt><dd id="stat-day">-</dd></div>
+          <div class="stat"><dt>Full ceiling</dt><dd id="stat-ceiling">-</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="season-title">
+      <div class="panel-head">
+        <h2 id="season-title">The block · W1–W19</h2>
+        <ul class="legend">
+          <li><span class="sw pink" aria-hidden="true"></span>Distance</li>
+          <li><span class="sw orange" aria-hidden="true"></span>Over ceiling</li>
+          <li><span class="sw gold" aria-hidden="true"></span>Ceiling</li>
+          <li><span class="sw teal" aria-hidden="true"></span>Recovery week</li>
+        </ul>
+      </div>
+      <div class="canvas-wrap"><canvas id="season-chart" height="280" role="img" aria-label="Weekly distance versus ceiling, weeks 1 to 19"></canvas></div>
+    </section>
+
+    <div class="panel-row">
+      <section class="panel" aria-labelledby="daily-title">
+        <h2 id="daily-title">Daily distance</h2>
+        <div class="canvas-wrap"><canvas id="daily-chart" height="190" role="img" aria-label="Distance per day this week"></canvas></div>
+      </section>
+      <section class="panel" aria-labelledby="flags-title">
+        <h2 id="flags-title">Flags</h2>
+        <div id="flags"></div>
+      </section>
+    </div>
+
+    <section class="panel" aria-labelledby="climb-title">
+      <h2 id="climb-title">Climb watch</h2>
+      <div id="climb-watch" class="callout"></div>
+    </section>
+  </main>
+
+  <div id="tooltip" class="tooltip hidden" role="status"></div>
+  <footer id="footer"></footer>
+
+  <script src="data.js"></script>
+  <script src="nav.js"></script>
+  <script src="app.min.js"></script>
+</body>
+</html>

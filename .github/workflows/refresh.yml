@@ -1,0 +1,93 @@
+# refresh.yml — on-demand headless run of the X Millas dashboard pipeline.
+#
+# Fully deterministic since 2026-07-16: `node scripts/refresh.mjs` recomputes the
+# summary, rebuilds site data artifacts, and runs gates A–C — no Claude CLI, no
+# ANTHROPIC_API_KEY, zero token cost. The reviewer-agent/Gate D leg only applies
+# when site code changes, which never happens here (this job touches data/ + the
+# generated site artifacts only).
+#
+# ── Strava caveat ─────────────────────────────────────────────────────────────
+# Interactive sessions use claude.ai-managed Strava OAuth, which is NOT available
+# headless on a CI runner. This workflow therefore rebuilds from the raw data
+# already committed in data/raw/ — fresh weeks arrive via interactive sessions.
+# TODO: a headless Strava fetch (STRAVA_REFRESH_TOKEN secret + a small fetch
+# script writing the raw schema) would upgrade this to a full refresh.
+#
+# Schedule: cron is UTC. 05:30 Mon/Thu and 20:30 Sun approximate the intended
+# Europe/London times and drift by 1h across BST/GMT transitions — acceptable.
+
+name: refresh
+
+on:
+  # Scheduled auto-refresh DISABLED 2026-07-09 by owner to avoid metered
+  # ANTHROPIC_API_KEY costs. The pipeline is now deterministic (no API cost),
+  # but without a headless Strava fetch a scheduled run can only rebuild from
+  # committed raw data, so the schedule stays off until that TODO is done.
+  # schedule:
+  #   - cron: "30 5 * * 1,4"   # Mon + Thu 05:30 UTC (~05:30/06:30 London)
+  #   - cron: "30 20 * * 0"    # Sun 20:30 UTC (~20:30/21:30 London)
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Optional note for the run (e.g. mid-week)"
+        required: false
+        default: ""
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+        # No npm install: gate scripts are dependency-free Node;
+        # html-validate arrives via `npx --yes` inside Gate C.
+
+      - name: Run pipeline (deterministic — recompute summary, rebuild site data, gates A–C)
+        run: node scripts/refresh.mjs
+
+      # Belt-and-braces: verify independently of the runner script.
+      - name: Gate A — raw data
+        run: bash .claude/hooks/gate-a-raw.sh
+
+      - name: Gate B — summaries reconcile
+        run: bash .claude/hooks/gate-b-summary.sh
+
+      - name: Gate C — site build
+        run: bash .claude/hooks/gate-c-build.sh
+
+      - name: Compute commit message
+        id: msg
+        run: |
+          ISO_WEEK=$(TZ=Europe/London date +%G-W%V)
+          DOW=$(TZ=Europe/London date +%u)   # 1=Mon .. 7=Sun
+          SUFFIX=""
+          if [ "$DOW" != "7" ]; then SUFFIX=" (mid-week)"; fi
+          NOTE="${{ github.event.inputs.note }}"
+          if [ -n "$NOTE" ]; then SUFFIX=" ($NOTE)"; fi
+          echo "message=refresh: ${ISO_WEEK}${SUFFIX}" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data site
+          if git diff --cached --quiet; then
+            echo "No changes to commit — skipping."
+          else
+            git commit -m "${{ steps.msg.outputs.message }}"
+            git push
+          fi
