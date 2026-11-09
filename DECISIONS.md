@@ -22,7 +22,7 @@
 8. **Gates A/B/R pass on empty** pre-block. Gate B still blocks if raw exists without summaries.
 9. **Units** default mi (Strava pref imperial); storage metric.
 10. **Palette**: GTA VI-inspired colours only (sunset/neon). No logos, fonts, or names from the game. Display font: Anton (Google Fonts).
+11. **Not ported**: course planner, PR previews, debrief modal (debriefs are inline `<details>` on plan.html), strength/venues/regs pages.
 12. **Workout library** (2026-11-09, owner request): `data/workouts.json` explains each session with an honest evidence tag. Most hill and stride work is coaching consensus. Cited: Barnes 2013 (uphill intervals), Frandsen/Nielsen 2025 (single-session spikes), Bontemps 2024 (downhill repeated bout), a 65-km ultra study (fatigued uphill economy).
 13. **long_run_spike flag** from Frandsen/Nielsen 2025 (verified against the BJSM paper). Weekly-ratio rules showed no link, so the weekly ceiling stays a tissue guard, not an injury rule.
 14. **Plan edits**: downhill strides added W9/11/13/15 (2026 lost most on the first descent). Calf raises moved to `every_week`.
-11. **Not ported**: course planner, PR previews, debrief modal (debriefs are inline `<details>` on plan.html), strength/venues/regs pages.
