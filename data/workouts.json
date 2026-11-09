@@ -1,0 +1,212 @@
+{
+  "about": "Workout library for the X Millas 2027 block. Hand-maintained (like plan.json). plan.json key sessions reference these by id. Evidence: strong = trials/large cohorts; moderate = small studies; consensus = coaching practice, little direct research; your-data = from your own past X Millas editions.",
+  "course_facts": {
+    "mid_climb": "Mid-race climb: 1.75 km at 4.3% (+76 m), mile 3.5–4.6. PB 10:00.",
+    "finish_drag": "Finish drag: 3.15 km at 2.2% (+71 m), mile 7.8–9.8. PB 16:18.",
+    "fade": "In non-PB years the finish drag cost 3.5–6% more grade-adjusted effort than the mid-race climb. In the 2023 PB they were level."
+  },
+  "workouts": [
+    {
+      "id": "easy",
+      "name": "Easy run",
+      "kind": "aerobic",
+      "what": "Conversational running, nose-breathing pace, flat or rolling.",
+      "why": "Builds the aerobic base (capillaries, mitochondria, fat use) and, more importantly here, lets bone, tendon and calf tissue adapt to road impact at a load they can absorb.",
+      "for_xmillas": "Most of the block's distance. Road running is harsher than the hiking-heavy GTCB build, so this is where the tissue catches up.",
+      "how": "Truly easy. If in doubt, slower. Walk a hill rather than grind it.",
+      "watch_out": "Easy days drifting into steady. That steals recovery from the key sessions.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "strides",
+      "name": "Strides (flat)",
+      "kind": "neuromuscular",
+      "what": "4–8 × ~20 s smooth accelerations to about mile-race pace, full walk/jog recovery.",
+      "why": "Keeps leg speed and running form sharp at almost no fatigue cost. Reminds the nervous system how to run fast and relaxed.",
+      "for_xmillas": "Re-finds turnover after months of ultra pace and hiking. It also primes the quick, relaxed descents where 2026 lost the most time.",
+      "how": "After an easy run. Build up, hold for a few seconds, float down. Never sprint flat out.",
+      "watch_out": "Cold, tight calves: do them at the end of the run, not the start.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "hill-strides",
+      "name": "Hill strides",
+      "kind": "neuromuscular",
+      "what": "6–10 × ~20 s brisk running up a 4–8% hill, walk down.",
+      "why": "Recruits more muscle fibre and builds uphill power. The hill limits speed and impact, so you get a strong stimulus with less hamstring and impact risk than flat sprinting.",
+      "for_xmillas": "First uphill stimulus of the block: power without fatigue, before any rep that could cause a fade.",
+      "how": "Tall posture, quick short steps, drive the arms. Stop each one before form breaks. Walk all the way down.",
+      "watch_out": "Calf load is high going uphill on the forefoot. Keep reps short and stop if the calf talks.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "calf-strength",
+      "name": "Calf raises",
+      "kind": "strength",
+      "what": "Single-leg raises, straight knee (gastrocnemius) and bent knee (soleus), slow lowering.",
+      "why": "The calf, especially the soleus, takes several times body weight with every running step. Strength gives it margin, and climbing loads it hardest.",
+      "for_xmillas": "Calf trouble was behind the 2024 run/walk race. It's the precaution watch on the dashboard, and every hill session leans on it.",
+      "how": "2–3×/wk, 3 × 10–15 per leg each type, 3 s lowering. Add a backpack load once 15 is easy.",
+      "watch_out": "Do them after runs or on rest days, not right before hill work.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "long-run",
+      "name": "Long run",
+      "kind": "aerobic",
+      "what": "The week's longest run, easy effort, rolling terrain later in the block.",
+      "why": "Builds durability: running economy holds up better late in a run when long runs are regular. Also the big tissue-loading session of the week.",
+      "for_xmillas": "Durability is the late-race fade. The finish drag starts after 12.6 km, and the long run is how 12.6 km stops feeling long.",
+      "how": "Grow it gently. Keep each long run within about 10% of your longest run in the last 30 days. The dashboard flags a spike.",
+      "watch_out": "A large cohort study (5,200 runners) found injury risk rose when one run was >10% longer than the 30-day longest. Weekly-total rules showed no such link.",
+      "evidence": "strong",
+      "sources": [
+        { "label": "Frandsen, Nielsen et al. 2025, BJSM — single-session spikes", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12421110" }
+      ]
+    },
+    {
+      "id": "benchmark",
+      "name": "Benchmark climb",
+      "kind": "test",
+      "what": "Same local road climb (3–5%, 3–6 min), same effort, every recovery week.",
+      "why": "A repeatable test that shows if uphill running is getting stronger: faster at the same heart rate, or the same time at a lower one.",
+      "for_xmillas": "The direct measure of the block's main target, retested in W4, W8, W12 and W16.",
+      "how": "Warm up 15 min. Run it at controlled hard effort, like the mid-race climb, not flat out. Note time, avg HR, how it felt.",
+      "watch_out": "Weather, wind and fatigue skew it. Compare HR and time together, and do it fresh.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "hill-reps-short",
+      "name": "Short hill reps",
+      "kind": "hills",
+      "what": "8–10 × 45 s or 6 × 90 s up 4–8%, at about 5 km effort. Jog down.",
+      "why": "Uphill intervals improve running economy and 5 km performance. In a 6-week trial, the hardest uphill program gave the clearest economy gain (~2.4%).",
+      "for_xmillas": "Builds the uphill engine and the strength to hold form on the steep parts of the mid-race climb (sections up to 8–10%).",
+      "how": "Strong but controlled. The last rep should match the first. Full jog-down recovery.",
+      "watch_out": "Racing the reps. If pace drops >5% across the set, stop: that's the fade you're training out, not into.",
+      "evidence": "moderate",
+      "sources": [
+        { "label": "Barnes et al. 2013, IJSPP — uphill interval programs", "url": "https://pubmed.ncbi.nlm.nih.gov/23538293/" }
+      ]
+    },
+    {
+      "id": "steady",
+      "name": "Steady / tempo",
+      "kind": "threshold",
+      "what": "15–20 min continuous at comfortably hard: about half-marathon effort, a few words at a time.",
+      "why": "Raises the pace you can hold without lactate climbing. A 10-miler is run just under this threshold.",
+      "for_xmillas": "Race effort for 16 km is just under threshold. This is the flat half of the race-pace engine.",
+      "how": "Even effort, not even pace, on rolling ground. Finish feeling you could do 5 more min.",
+      "watch_out": "Turning it into a race.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "hill-reps-long",
+      "name": "Long hill reps",
+      "kind": "hills",
+      "what": "5–6 × 3–4 min up 3–5% at race effort, jog down.",
+      "why": "Longer reps train the ability to sustain uphill effort, not just produce it. Same family as the uphill intervals research.",
+      "for_xmillas": "Mid-race climb sim: 1.75 km at 4.3% took 10 min in the PB. 3–4 min reps at that grade rehearse it in chunks.",
+      "how": "Race effort, by feel and HR, not pace. Hold posture and cadence to the top of each rep.",
+      "watch_out": "Effort creep on later reps. The goal is even reps.",
+      "evidence": "moderate",
+      "sources": [
+        { "label": "Barnes et al. 2013, IJSPP", "url": "https://pubmed.ncbi.nlm.nih.gov/23538293/" }
+      ]
+    },
+    {
+      "id": "climb-tempo",
+      "name": "Climb tempo",
+      "kind": "race-specific",
+      "what": "2 × 8 min (building to 12 min) continuous up a long gentle 2–3% drag at tempo effort.",
+      "why": "Trains steady threshold-type effort on a shallow climb: the hardest kind of uphill to pace, because it's runnable all the way.",
+      "for_xmillas": "Finish-drag sim: 3.15 km at 2.2% took 16:18 in the PB. This is where the fade has shown up every non-PB year.",
+      "how": "Find a long gentle road drag. Hold effort, not pace, and run tall. Shorten the stride rather than slow the cadence.",
+      "watch_out": "Starting too hard. The drag punishes the first minute's ego for the last five.",
+      "evidence": "your-data",
+      "sources": []
+    },
+    {
+      "id": "late-climb",
+      "name": "Climbing on tired legs",
+      "kind": "race-specific",
+      "what": "Steady running first (30 min or a long run), then a sustained climb at effort.",
+      "why": "Running economy, including uphill, worsens as fatigue builds. Practising climbing after running trains the durability to hold it.",
+      "for_xmillas": "THE target. Your data: climbs are fine fresh, but the late climb costs 3.5–6% more effort. This session rehearses exactly that.",
+      "how": "Easy-to-steady first part, then the climb at controlled race effort. Judge it by the last minute: still running tall?",
+      "watch_out": "It's a double load. Never in the same week as a long-run spike, and skip it if the calf flags.",
+      "evidence": "moderate",
+      "sources": [
+        { "label": "Changes in running economy during a 65-km ultra (uphill economy worsens with fatigue)", "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6300573/" }
+      ]
+    },
+    {
+      "id": "course-sim",
+      "name": "Course simulation",
+      "kind": "race-specific",
+      "what": "About 10 km rolling at steady effort straight into ~3 km of climbing at race effort.",
+      "why": "Rehearses the race's shape (descents, rollers, then the long climb) so pacing and fuelling are known before race day.",
+      "for_xmillas": "Mirrors km 0–12.6 into the finish drag. If you're in Alfàs, run the real course.",
+      "how": "Hold back early, as on race day. Descents relaxed and quick, then commit on the climb.",
+      "watch_out": "The biggest single session of the block. Treat the next 2 days as easy.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "race-effort-hills",
+      "name": "Race-effort hill miles",
+      "kind": "race-specific",
+      "what": "3 × 1 mile at race effort, each including a climb, 3 min jog between.",
+      "why": "Sharpens the feel of race effort over mixed terrain without the cost of a full simulation.",
+      "for_xmillas": "Locks in the effort you want on the mid-race climb and the finish drag, by feel.",
+      "how": "Even effort across each mile: let pace drop on the climb and recover on the flat.",
+      "watch_out": "Too fast in taper season. You can't gain fitness now, only lose freshness.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "downhill",
+      "name": "Downhill strides",
+      "kind": "eccentric",
+      "what": "6 × 20 s quick, relaxed running down a gentle 3–5% slope, walk back up.",
+      "why": "Downhill running builds eccentric quad tolerance (the 'repeated bout effect'). Earlier bouts reduce soreness and fatigue from later ones.",
+      "for_xmillas": "2026's biggest loss vs the PB was the first descent (+165 s). Quick, relaxed descending is free time.",
+      "how": "Lean slightly forward, quick light steps, arms loose. Gentle grade only.",
+      "watch_out": "Steep grades and long reps hammer the quads and knees. Keep it short and gentle.",
+      "evidence": "moderate",
+      "sources": [
+        { "label": "Bontemps et al. 2024, EJSS — repeated downhill bouts", "url": "https://researchonline.ljmu.ac.uk/id/eprint/24976/" }
+      ]
+    },
+    {
+      "id": "shakeout",
+      "name": "Shakeout",
+      "kind": "taper",
+      "what": "20–30 min very easy plus a few strides.",
+      "why": "Keeps the legs moving and sharp without adding load.",
+      "for_xmillas": "Race week: arrive fresh, not flat.",
+      "how": "Short and easy. A few strides at the end.",
+      "watch_out": "Testing fitness in race week.",
+      "evidence": "consensus",
+      "sources": []
+    },
+    {
+      "id": "race",
+      "name": "X Millas",
+      "kind": "race",
+      "what": "10 mi, l'Alfàs del Pi, Sun 18 Apr 2027.",
+      "why": "The point of it all.",
+      "for_xmillas": "Plan: hold back on the first descent but run it quick and relaxed. Even effort up the mid-race climb. Save something for the finish drag and hold effort to the top.",
+      "how": "Effort, not pace. The finish drag is where the race is decided.",
+      "watch_out": "Heat: 4 of 5 editions were hot. Hydrate the day before (the 2023 lesson).",
+      "evidence": "your-data",
+      "sources": []
+    }
+  ]
+}

@@ -16,3 +16,4 @@ Fetch ALL activities for the requested Mon–Sun (Europe/London) window via the 
 - Include every activity in the window, on-foot or not — filtering by sport type is the analyst's job.
 - Write ONLY under `data/raw/`. Never touch `data/summary/`, `site/`, or any config file.
 - Never invent or estimate values; if a field is missing from Strava, write `null`.
+- One-off, when asked: write the 30 days before W1 (2026-11-07 → 2026-12-06) to `data/refs/preblock.json` as `{ "window": {...}, "fetched_at": "", "activities": [ /* raw activity shape */ ] }`. It feeds the long_run_spike check.

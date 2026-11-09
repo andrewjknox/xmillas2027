@@ -78,6 +78,74 @@
     }
   })();
 
+  /* ---------- workout explainers (plan key sessions → data/workouts.json) ---------- */
+  var WK = {};
+  (D.workouts ? D.workouts.workouts : []).forEach(function (w) { WK[w.id] = w; });
+  var EV = { strong: "Strong evidence", moderate: "Some evidence", consensus: "Coaching consensus", "your-data": "Your race data" };
+  function keyText(k) { return typeof k === "string" ? k : k.t; }
+  function keyItem(k) {
+    var w = typeof k === "object" ? WK[k.w] : null;
+    return "<li>" + esc(keyText(k)) +
+      (w ? '<button type="button" class="wk-info" data-w="' + esc(w.id) + '" aria-expanded="false" aria-label="Why: ' + esc(w.name) + '">?</button>' : "") +
+      "</li>";
+  }
+  function keyList(keys) { return '<ul class="keys">' + keys.map(keyItem).join("") + "</ul>"; }
+  function tags(w) {
+    return '<div class="tags"><span class="tag">' + esc(w.kind) + '</span><span class="tag ev-' + esc(w.evidence) + '">' + esc(EV[w.evidence] || w.evidence) + "</span></div>";
+  }
+  function sources(w) {
+    return w.sources.length
+      ? '<ul class="src">' + w.sources.map(function (s) { return '<li><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + "</a></li>"; }).join("") + "</ul>"
+      : "";
+  }
+
+  var pop = null, popBtn = null;
+  function closePop() {
+    if (pop) pop.classList.add("hidden");
+    if (popBtn) popBtn.setAttribute("aria-expanded", "false");
+    popBtn = null;
+  }
+  function openPop(btn) {
+    var w = WK[btn.getAttribute("data-w")];
+    if (!w) return;
+    if (!pop) {
+      pop = document.createElement("div");
+      pop.className = "wk-pop hidden";
+      pop.setAttribute("role", "dialog");
+      document.body.appendChild(pop);
+    }
+    closePop();
+    pop.innerHTML = '<button type="button" class="close" aria-label="Close">×</button>' +
+      "<h3>" + esc(w.name) + "</h3>" + tags(w) +
+      '<p><span class="lbl">Why</span>' + esc(w.why) + "</p>" +
+      '<p><span class="lbl">For X Millas</span>' + esc(w.for_xmillas) + "</p>" +
+      '<p><span class="lbl">How</span>' + esc(w.how) + "</p>" +
+      '<p class="small"><a href="plan.html#w-' + esc(w.id) + '">Full card →</a></p>';
+    pop.setAttribute("aria-label", w.name);
+    pop.classList.remove("hidden");
+    popBtn = btn;
+    btn.setAttribute("aria-expanded", "true");
+    var r = btn.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight;
+    var left = Math.max(16, Math.min(window.innerWidth - pw - 16, r.left - pw / 2));
+    var top = r.bottom + 8 + ph > window.innerHeight ? Math.max(16, r.top - ph - 8) : r.bottom + 8;
+    pop.style.left = left + "px";
+    pop.style.top = top + "px";
+    pop.querySelector(".close").focus({ preventScroll: true });
+  }
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".wk-info[data-w]") : null;
+    if (btn) { e.preventDefault(); if (popBtn === btn) closePop(); else openPop(btn); return; }
+    if (pop && (e.target.closest(".close") || !pop.contains(e.target))) {
+      var b = popBtn;
+      closePop();
+      if (b && e.target.closest(".close")) b.focus();
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && popBtn) { var b = popBtn; closePop(); b.focus(); }
+  });
+  window.addEventListener("scroll", closePop, { passive: true });
+
   /* ---------- canvas plumbing ---------- */
   function setupCanvas(canvas) {
     var dpr = window.devicePixelRatio || 1;
@@ -122,8 +190,7 @@
     }
     var focusW = w || (preBlock ? weeks[0] : null);
     $("hero-focus").innerHTML = focusW
-      ? "<strong>" + (w ? "Focus: " : "W1 focus: ") + "</strong>" + esc(focusW.focus) +
-        "<ul>" + focusW.key.map(function (k) { return "<li>" + esc(k) + "</li>"; }).join("") + "</ul>"
+      ? "<strong>" + (w ? "Focus: " : "W1 focus: ") + "</strong>" + esc(focusW.focus) + keyList(focusW.key)
       : "";
 
     var actual = s ? s.distance.actual_m : 0;
@@ -289,10 +356,41 @@
         "<td>" + esc(w.phase) + (w.notes ? '<br><span class="small good">' + esc(w.notes) + "</span>" : "") + "</td>" +
         '<td class="num">' + dist(ceilingM(w)) + "</td>" +
         '<td class="num">' + act + "</td>" +
-        "<td>" + esc(w.focus) + "<ul>" + w.key.map(function (k) { return "<li>" + esc(k) + "</li>"; }).join("") + "</ul>" + debrief + "</td>" +
+        "<td>" + esc(w.focus) + keyList(w.key) + debrief + "</td>" +
         "</tr>";
     });
     document.querySelector("#plan-table tbody").innerHTML = rows.join("");
+
+    $("every-week").innerHTML = (plan.every_week || []).map(keyItem).join("");
+
+    // workout library: one card per workout, with the weeks that use it
+    var usedIn = {};
+    weeks.forEach(function (w) {
+      w.key.forEach(function (k) {
+        if (typeof k !== "object") return;
+        (usedIn[k.w] = usedIn[k.w] || []).indexOf("W" + w.week) < 0 && usedIn[k.w].push("W" + w.week);
+      });
+    });
+    $("lib-about").textContent = D.workouts.course_facts.fade + " Evidence tags: strong = trials/large cohorts, some = small studies, consensus = coaching practice, your data = past X Millas editions.";
+    $("library").innerHTML = D.workouts.workouts.map(function (w) {
+      var used = usedIn[w.id] ? "Used in " + usedIn[w.id].join(", ") : (plan.every_week || []).some(function (k) { return k.w === w.id; }) ? "Every week" : "";
+      return '<article id="w-' + esc(w.id) + '">' +
+        "<h3>" + esc(w.name) + "</h3>" + tags(w) +
+        '<p><span class="lbl">What</span>' + esc(w.what) + "</p>" +
+        '<p><span class="lbl">Why</span>' + esc(w.why) + "</p>" +
+        '<p><span class="lbl">For X Millas</span>' + esc(w.for_xmillas) + "</p>" +
+        '<p><span class="lbl">How</span>' + esc(w.how) + "</p>" +
+        '<p><span class="lbl">Watch out</span>' + esc(w.watch_out) + "</p>" +
+        sources(w) +
+        (used ? '<p class="used">' + used + "</p>" : "") +
+        "</article>";
+    }).join("");
+    // re-apply :target scroll after async render (deep links from popovers)
+    if (!renderPlan.scrolled && location.hash.indexOf("#w-") === 0) {
+      renderPlan.scrolled = true;
+      var t = document.getElementById(location.hash.slice(1));
+      if (t) t.scrollIntoView();
+    }
     // dist_target_km is the plan field the ceiling column renders
   }
 

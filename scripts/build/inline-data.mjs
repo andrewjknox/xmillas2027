@@ -4,6 +4,7 @@
 //   index      data/summary/index.json
 //   summaries  data/summary/<week>.json
 //   reports    data/reports/<week>.json        (optional, on-demand debriefs)
+//   workouts   data/workouts.json              (library; plan key ids validated)
 //   course     data/refs/course.json           (profile + sections)
 //   editions   data/refs/editions.json         (past-edition analysis)
 //   paceModel  data/refs/pace-model.json       (personal grade->pace curve)
@@ -44,8 +45,18 @@ export function collect() {
     for (const week of ri.weeks) reports[week] = readJSON(`data/reports/${week}.json`);
   }
 
+  // workout library: every plan key session must reference a known workout id
+  const workouts = readJSON("data/workouts.json");
+  const ids = new Set((workouts.workouts ?? []).map((w) => w.id));
+  const refs = [...(plan.every_week ?? []), ...plan.weeks.flatMap((w) => w.key ?? [])];
+  const bad = refs.filter((k) => typeof k !== "object" || !ids.has(k.w)).map((k) => JSON.stringify(k));
+  if (bad.length) {
+    console.error(`inline-data: plan key sessions with unknown workout id: ${bad.join(", ")}`);
+    process.exit(2);
+  }
+
   return {
-    plan, index, summaries, reports,
+    plan, index, summaries, reports, workouts,
     course: readJSON("data/refs/course.json"),
     editions: readJSON("data/refs/editions.json"),
     paceModel: readJSON("data/refs/pace-model.json"),

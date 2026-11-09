@@ -16,12 +16,14 @@
 //   over_ceiling — completed week (days_elapsed 7) ran > CEILING_TOL over the
 //                 plan's distance target. Targets are ceilings, not quotas:
 //                 owner wants tissue to lead, not the numbers (2026-11-09).
+//   long_run_spike — an on-foot run >10% longer than the longest in the
+//                 previous 30 days (Frandsen/Nielsen 2025). See spikeFlags.
 //   (Walk activities are never flagged: a Walk is a Walk and doesn't count.)
 
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { resolve } from "node:path";
-import { reconcileWeek, parseLocalIso, nowLondonKey } from "../reconcile.mjs";
+import { reconcileWeek, parseLocalIso, nowLondonKey, ON_FOOT } from "../reconcile.mjs";
 
 function round(n) {
   return Math.round(n);
@@ -74,11 +76,58 @@ function injuryFlags(activities) {
   return flags;
 }
 
+// Single-session spike (Frandsen, Nielsen et al. 2025, BJSM, n=5,200): overuse
+// injury rate rose when one run exceeded the longest run of the previous 30
+// days by >10%; weekly-ratio rules showed no such link. For each on-foot
+// activity this week, compare against on-foot activities in the 30 days
+// before it (prior raw weeks + data/refs/preblock.json + earlier this week).
+// No history in the window = no flag (nothing to compare against).
+const SPIKE_TOL = 1.1;
+const DAY_MS = 86400000;
+
+function spikeFlags(activities, history) {
+  const flags = [];
+  const pool = [...history, ...activities]
+    .filter((a) => ON_FOOT.has(a?.sport_type) && parseLocalIso(a?.start_date_local))
+    .map((a) => ({ a, t: parseLocalIso(a.start_date_local).utc, d: a.distance_m ?? 0 }));
+  for (const a of activities) {
+    if (!ON_FOOT.has(a?.sport_type)) continue;
+    const p = parseLocalIso(a.start_date_local);
+    if (!p) continue;
+    const prior = pool.filter((x) => x.t < p.utc && x.t >= p.utc - 30 * DAY_MS && x.a !== a);
+    if (!prior.length) continue;
+    const longest = Math.max(...prior.map((x) => x.d));
+    const d = a.distance_m ?? 0;
+    if (longest > 0 && d > longest * SPIKE_TOL) {
+      flags.push({
+        type: "long_run_spike",
+        detail: `"${a.name}", ${a.start_date_local.slice(0, 10)}: ${(d / 1000).toFixed(1)} km = +${Math.round((100 * d) / longest - 100)}% vs 30-day longest ${(longest / 1000).toFixed(1)} km`,
+      });
+    }
+  }
+  return flags;
+}
+
+/** All activities from other raw weeks + optional pre-block reference. */
+export function loadHistory(exceptWeek) {
+  const out = [];
+  for (const f of readdirSync("data/raw").filter((f) => /^\d{4}-W\d{2}\.json$/.test(f) && f !== `${exceptWeek}.json`)) {
+    const r = JSON.parse(readFileSync(`data/raw/${f}`, "utf8"));
+    if (Array.isArray(r.activities)) out.push(...r.activities);
+  }
+  if (existsSync("data/refs/preblock.json")) {
+    const pb = JSON.parse(readFileSync("data/refs/preblock.json", "utf8"));
+    if (Array.isArray(pb.activities)) out.push(...pb.activities);
+  }
+  return out;
+}
+
 /**
  * Compute a summary document from a parsed raw week + plan.
  * @param {object} raw   parsed data/raw/YYYY-Www.json
  * @param {object} plan  parsed data/plan.json
- * @param {object} [opts] { nowKey, generatedAt } overrides for testing
+ * @param {object} [opts] { nowKey, generatedAt, history } — history = activities from
+ *                       other weeks, for the long_run_spike check
  */
 export function buildSummary(raw, plan, opts = {}) {
   const rec = reconcileWeek(raw, plan);
@@ -98,6 +147,7 @@ export function buildSummary(raw, plan, opts = {}) {
       detail: `${(rec.distance_m / 1000).toFixed(1)} km vs ${(target / 1000).toFixed(1)} km ceiling`,
     });
   }
+  flags.push(...spikeFlags(activities, opts.history ?? []));
 
   return {
     iso_week: raw.iso_week,
@@ -135,7 +185,7 @@ if (isMain) {
   try {
     const raw = JSON.parse(readFileSync(`data/raw/${week}.json`, "utf8"));
     const plan = JSON.parse(readFileSync("data/plan.json", "utf8"));
-    summary = buildSummary(raw, plan);
+    summary = buildSummary(raw, plan, { history: loadHistory(week) });
   } catch (e) {
     console.error(`summary: ${e.message}`);
     process.exit(2);

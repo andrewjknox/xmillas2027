@@ -15,7 +15,7 @@ Skeleton ported from `C:\Projects\gtcb` (never modify gtcb). Read before any wor
 | Headline | Weekly distance vs ceiling | live |
 | Out | Time on feet | live |
 | Context | Vert | live |
-| In | Long run, flags (calf, injury, over_ceiling) | live |
+| In | Long run, flags (calf, injury, over_ceiling, long_run_spike) | live |
 | In | Key sessions done, zone split, GAP on climbs, benchmark retests | TODO: needs per-activity streams/segment efforts |
 | In | Trail races as tune-ups | `plan.races` — dates TBD from owner |
 
@@ -53,7 +53,9 @@ Skeleton ported from `C:\Projects\gtcb` (never modify gtcb). Read before any wor
 | black / white | #000000 / #ffffff | |
 
 ## Data shapes
-`data/plan.json`: `race`, `week1_start`, `targets_are: "ceilings"`, `benchmark_climb {name, strava_segment_id, note}`, `races []`, `weeks [{week, iso_week, start, phase, dist_target_km, notes?, focus, key[]}]`.
+`data/plan.json`: `race`, `week1_start`, `targets_are: "ceilings"`, `benchmark_climb {name, strava_segment_id, note}`, `races []`, `every_week [{w, t}]`, `weeks [{week, iso_week, start, phase, dist_target_km, notes?, focus, key [{w, t}]}]`. `w` = workout id, `t` = session text.
+
+`data/workouts.json` (hand-maintained): `course_facts`, `workouts [{id, name, kind, what, why, for_xmillas, how, watch_out, evidence: strong|moderate|consensus|your-data, sources [{label, url}]}]`. Plan site shows a ? popover per session plus a library. `inline-data.mjs` fails the build on an unknown `w`.
 
 `data/raw/YYYY-Www.json` (data-agent only, unfiltered): same as gtcb —
 `{iso_week, training_week, window {start, end, tz}, fetched_at, activities [{id, name, sport_type, start_date_local, distance_m, moving_time_s, elapsed_time_s, elevation_gain_m, description}]}`.
@@ -65,9 +67,11 @@ Skeleton ported from `C:\Projects\gtcb` (never modify gtcb). Read before any wor
   "time_on_feet": { "actual_s": 0 }, "vert": { "actual_m": 0 },
   "sessions": { "count": 0, "on_foot_count": 0 },
   "daily": [{ "date": "", "vert_m": 0, "time_s": 0, "distance_m": 0 }],
-  "flags": [{ "type": "calf|injury|over_ceiling", "detail": "" }] }
+  "flags": [{ "type": "calf|injury|over_ceiling|long_run_spike", "detail": "" }] }
 ```
 + `data/summary/index.json` `{weeks: []}`.
+
+`long_run_spike`: a run >10% longer than the longest on-foot run in the previous 30 days (Frandsen/Nielsen 2025, BJSM). History = other raw weeks + optional `data/refs/preblock.json` (`{activities: [...]}`, raw activity shape). Before W1, data-agent should write the 30 days before 2026-12-07 there.
 
 `data/reports/YYYY-Www.json`: prose only — `{iso_week, training_week, generated_at, headline, narrative[]}` + index. Same as gtcb.
 
@@ -89,6 +93,7 @@ Refs (regenerate only when inputs change):
 Pre-block (no raw files yet) gates A/B/R pass with "nothing to validate".
 
 ## Open items (owner)
+- `data/refs/preblock.json`: fetch 2026-11-07 → 2026-12-06 on the first W1 run.
 - Trail race dates → `plan.races`.
 - Benchmark climb (local road climb, ~3–5%, 3–6 min) → `plan.benchmark_climb`.
 - Approve/tune the drafted plan ceilings.

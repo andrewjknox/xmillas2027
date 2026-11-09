@@ -29,7 +29,8 @@ narrative half of the plan page's weekly debrief. All stats render live client-s
 - `data/summary/<iso-week>.json` — the week's totals vs target (must have `days_elapsed: 7`;
   if not, STOP and report the week isn't finalized — never write a report for it).
 - `data/raw/<iso-week>.json` — session names/descriptions, for specific prose and calf/injury mentions.
-- `data/plan.json` — this week's ceiling/focus/`key` sessions/`notes`, next week's focus.
+- `data/plan.json` — this week's ceiling/focus/`key` sessions (`{w, t}`)/`notes`, next week's focus.
+- `data/workouts.json` — what each key session is for. Use it to say why a done or missed session matters.
 - The 2–3 most recent existing `data/reports/*.json` — continuity ("second quiet-calf week running").
 - Neighbouring summaries in `data/summary/` as needed for trajectory.
 
